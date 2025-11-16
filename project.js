@@ -15,7 +15,20 @@ function makeMove (turn, board){
     }
     
 }
+function printBoard(board){ // a board funtion
+    for(let i = 0; i< board.length; i++){ // help loop through each row and each column => in total it runs 3 times
+        const row = board[i]
+        let rowString = ''
+        for(let j=0; j<row.length; j++){ //looping through the colunm in the row => in to tal it runs 9 times
+            rowString += row[j]
+            if (j !== row.length - 1) rowString += " | "
+        }
+        console.log(rowString)
+        if (i !== board.length -1) console.log('--------') // ensure that the separator is notprinted oon the last line
+        
 
+    }
+}
 
 const board = [  // this is a multi dimentional array
     ['', '', ''],
@@ -37,7 +50,7 @@ let turnCount = '0' // stating our initial turn value
 
 while (turnCount < 9) { // ensure that turns are not grater than 9
     makeMove(turn, board)
-    console.log(board)
+    printBoard(board)
     if (turn === 'x') turn = 'o' // help turn and switch from user x to user o alternatively
     else turn = "x"
     turnCount++;
