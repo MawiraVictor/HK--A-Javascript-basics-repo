@@ -72,6 +72,7 @@ const board = [  // this is a multi dimentional array
 let turn = 'x'
 let turnCount = '0' // stating our initial turn value
 
+
 printBoard(board) // prints the board first to show the user whats in the board at the start
 console.log()
 while (turnCount < 9) { // ensure that turns are not grater than 9
@@ -89,3 +90,4 @@ while (turnCount < 9) { // ensure that turns are not grater than 9
     else turn = "x"
     turnCount++;
 }
+if (turnCount === 9) console.log('Tie game')
