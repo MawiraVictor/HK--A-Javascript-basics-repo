@@ -29,6 +29,30 @@ function printBoard(board){ // a board funtion
 
     }
 }
+function checkWin(){ // this funtion checks which player wins
+    const lines = [ // aray that defines win conditions
+        [[0, 0], [0, 1], [0, 2]],  // this is row 0 
+        [[1, 0], [1, 1], [1, 2]],  // row 1
+        [[2, 0], [2, 1], [2, 2]],  //row 2
+        [[0, 0], [1, 0], [2, 0]],  //column 0
+        [[0, 1], [1, 1], [2, 1]],  //column  1
+        [[0, 1], [1, 2], [2, 2]],  //column 2
+        [[0, 0], [1, 1], [2, 2]],  //checking the major diaagonal
+        [[0, 2], [1, 1], [2, 0]]   //minor diagonal
+    ]
+    for (let line of lines){ // check the win conditions by looping each of the lines
+        let win = true;
+        for (let pos of line) {// loop in the line eg row 0 => from position [0, 0] to [0, 2]
+            const [row, col] = pos // assigns the first element to row and second element to col => in [0,1] 0=> row and 1 => col 
+            if (board[row][col] != turn){
+                win = false
+                break
+            }
+        }
+        if (win) return true
+    }
+    return false
+}
 
 const board = [  // this is a multi dimentional array
     ['', '', ''],
@@ -54,6 +78,12 @@ while (turnCount < 9) { // ensure that turns are not grater than 9
     console.log('it is the', turn, 'players turn')
     makeMove(turn, board)
     printBoard(board)
+    console.log()
+    const win = checkWin(board, turn)
+    if (win){
+        console.log(`player ${turn} has won the game`)
+        break;
+    }
 
     if (turn === 'x') turn = 'O' // help turn and switch from user x to user o alternatively
     else turn = "x"
