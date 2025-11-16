@@ -50,7 +50,16 @@ function printInfo(){
         
     }
     
-    function searchContacts () {}
+    function searchContacts () {
+        const searchString = prompt("Search: ").toLowerCase()
+        const results = [];
+
+        for (let contact of contacts){
+            if (contact.name.toLowerCase.includes(searchString)) results.push(contact)
+        }
+        
+        listContacts(results)
+    }
 
     function listContacts (contact) {
         for (let contact of contacts){
