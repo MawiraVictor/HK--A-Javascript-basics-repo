@@ -48,13 +48,14 @@ const board = [  // this is a multi dimentional array
 let turn = 'x'
 let turnCount = '0' // stating our initial turn value
 
-printBoard(board) // brints the board first to show the user whats in the board at the start
+printBoard(board) // prints the board first to show the user whats in the board at the start
 console.log()
 while (turnCount < 9) { // ensure that turns are not grater than 9
+    console.log('it is the', turn, 'players turn')
     makeMove(turn, board)
     printBoard(board)
 
-    if (turn === 'x') turn = 'o' // help turn and switch from user x to user o alternatively
+    if (turn === 'x') turn = 'O' // help turn and switch from user x to user o alternatively
     else turn = "x"
     turnCount++;
 }
